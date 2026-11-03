@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesmen Digital Ekonomi - Badan Usaha dalam Perekonomian</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for Teacher Dashboard Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#0d9488', // teal accent
+                            600: '#0284c7', // light blue
+                            700: '#1e40af', // deep navy blue
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .gradient-bg { background: linear-gradient(135deg, #1e40af 0%, #0d9488 100%); }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('landing-page')">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-800 text-sm sm:text-base leading-tight">SMAS AL-HILAAL TEHORU</h1>
+                    <p class="text-xs text-brand-500 font-medium">Asesmen Ekonomi Kelas XI • Fase F</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button onclick="openTeacherLoginModal()" class="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-700 hover:text-brand-700 bg-slate-100 hover:bg-slate-200 px-3 sm:px-4 py-2 rounded-lg transition duration-200">
+                    <i class="fa-solid fa-user-tie text-brand-700"></i>
+                    <span>Portal Guru</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- 1. LANDING PAGE VIEW -->
+        <section id="landing-page" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="gradient-bg rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+                    <i class="fa-solid fa-building-columns text-[250px]"></i>
+                </div>
+                <div class="relative z-10 max-w-2xl">
+                    <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block backdrop-blur-md">
+                        Asesmen Formatif & Sumatif
+                    </span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight mb-3">
+                        ASESMEN DIGITAL EKONOMI
+                    </h2>
+                    <h3 class="text-lg sm:text-xl font-medium text-teal-100 mb-6">
+                        Materi: Badan Usaha dalam Perekonomian
+                    </h3>
+                    <div class="flex flex-wrap gap-4 text-xs sm:text-sm text-slate-100 mb-8 border-t border-white/20 pt-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-school text-teal-300"></i>
+                            <span>SMAS Al-Hilaal Tehoru</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-chalkboard-user text-teal-300"></i>
+                            <span>Guru: Sumila Mahu, S.Pd.</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-layer-group text-teal-300"></i>
+                            <span>Fase F / Kelas XI</span>
+                        </div>
+                    </div>
+                    <button onclick="navigateTo('student-reg-page')" class="bg-white text-brand-700 hover:bg-slate-100 font-bold px-8 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-0.5 flex items-center space-x-3 text-base">
+                        <span>Mulai Asesmen</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Objectives & Specs -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Info Cards -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-50 text-brand-700 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">Tujuan Asesmen</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Mengukur pemahaman peserta didik mengenai konsep badan usaha, perbedaan dengan perusahaan, peran BUMN, BUMD, BUMS, serta Koperasi dalam pembangunan ekonomi nasional dan daerah.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-slate-500 space-y-1.5 list-disc list-inside">
+                        <li>Memahami Karakteristik BUMN/BUMD/BUMS</li>
+                        <li>Menganalisis Peran Koperasi</li>
+                        <li>Mengkaji Studi Kasus Usaha Lokal</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-teal-50 text-brand-500 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">Format & Ketentuan</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Asesmen terdiri dari 30 soal pilihan ganda interaktif (A, B, C, D, E) yang dirancang secara berjenjang dari tingkat dasar hingga penalaran kritis (HOTS).
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-center text-xs font-semibold">
+                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                            <span class="block text-slate-400 font-normal">Jumlah Soal</span>
+                            <span class="text-slate-700 text-sm">30 Butir</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                            <span class="block text-slate-400 font-normal">Waktu</span>
+                            <span class="text-slate-700 text-sm">60 Menit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">Penilaian & Umpan Balik</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Hasil ujian dihitung secara otomatis dengan pembobotan standar. Setelah tes selesai, peserta didik dapat langsung melihat nilai dan pembahasan lengkap tiap soal.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 text-xs text-slate-500 flex justify-between items-center">
+                        <span>KKM Target: <strong class="text-brand-700">75.00</strong></span>
+                        <span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full text-[10px] font-bold">Hasil Instan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. STUDENT REGISTRATION & INSTRUCTIONS VIEW -->
+        <section id="student-reg-page" class="hidden max-w-2xl mx-auto space-y-6">
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 card-shadow">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 bg-brand-50 text-brand-700 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg">Identitas Peserta Didik</h3>
+                        <p class="text-xs text-slate-500">Lengkapi data diri sebelum mengundi lembar soal asesmen.</p>
+                    </div>
+                </div>
+
+                <form id="regForm" onsubmit="handleStartExam(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap *</label>
+                        <input type="text" id="studentName" required placeholder="Contoh: Ahmad Abdullah" class="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 focus:border-brand-700 outline-none transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Kelas / Rombel *</label>
+                            <select id="studentClass" required class="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 focus:border-brand-700 outline-none transition">
+                                <option value="">-- Pilih Kelas XI --</option>
+                                <option value="XI-1">XI-1 (Fase F)</option>
+                                <option value="XI-2">XI-2 (Fase F)</option>
+                                <option value="XI-3">XI-3 (Fase F)</option>
+                                <option value="XI-4">XI-4 (Fase F)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Nomor Absen *</label>
+                            <input type="number" id="studentAbsen" required min="1" max="50" placeholder="Contoh: 05" class="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 focus:border-brand-700 outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- Instructions Accordion/Box -->
+                    <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-600 space-y-2">
+                        <h5 class="font-bold text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-info text-brand-500"></i>
+                            <span>Petunjuk Pengerjaan:</span>
+                        </h5>
+                        <ol class="list-decimal list-inside space-y-1 text-slate-600">
+                            <li>Bacalah setiap butir soal dengan cermat dan teliti.</li>
+                            <li>Pilihlah salah satu jawaban (A, B, C, D, atau E) yang paling tepat.</li>
+                            <li>Waktu pengerjaan adalah <strong>60 menit</strong> dan timer akan terus berjalan.</li>
+                            <li>Anda dapat berpindah nomor soal melalui tombol navigasi atau nomor grid.</li>
+                            <li>Klik tombol <strong>"Selesai & Kirim Jawaban"</strong> jika telah selesai.</li>
+                        </ol>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-between space-x-4">
+                        <button type="button" onclick="navigateTo('landing-page')" class="w-1/3 py-3 rounded-xl border border-slate-300 font-semibold text-slate-600 hover:bg-slate-100 text-sm transition">
+                            Batal
+                        </button>
+                        <button type="submit" class="w-2/3 gradient-bg text-white font-bold py-3 rounded-xl shadow-md hover:shadow-lg transition text-sm flex items-center justify-center space-x-2">
+                            <span>Mulai Kerjakan Soal</span>
+                            <i class="fa-solid fa-play text-xs"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 3. ASSESSMENT INTERACTIVE ENGINE VIEW -->
+        <section id="assessment-page" class="hidden space-y-6">
+            <!-- Exam Header Controls -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 card-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full md:w-auto">
+                    <div class="w-10 h-10 bg-brand-50 text-brand-700 rounded-xl flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h4 id="activeStudentTitle" class="font-bold text-slate-800 text-sm">Nama Peserta Didik</h4>
+                        <p id="activeStudentSub" class="text-xs text-slate-500">Kelas: - | No. Absen: -</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between md:justify-end space-x-4 w-full md:w-auto">
+                    <!-- Timer -->
+                    <div class="bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl flex items-center space-x-2 text-slate-800 font-mono font-bold text-sm">
+                        <i class="fa-regular fa-clock text-brand-500 animate-pulse"></i>
+                        <span id="timerDisplay">60:00</span>
+                    </div>
+
+                    <!-- Question Counter -->
+                    <div class="bg-brand-50 text-brand-700 font-bold px-3 py-2 rounded-xl text-xs">
+                        Soal <span id="currentQNumText">1</span> dari 30
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Layout: Question Area (Left) + Grid Palette (Right) -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                
+                <!-- Main Question Display (3 Cols) -->
+                <div class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 card-shadow flex flex-col justify-between min-h-[420px]">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                            <span id="questionTopicBadge" class="bg-teal-50 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full">
+                                Topik: Badan Usaha
+                            </span>
+                            <span id="questionDifficultyBadge" class="text-xs text-slate-400 font-medium">
+                                Tingkat: Moderat
+                            </span>
+                        </div>
+
+                        <!-- Question Text -->
+                        <h3 id="questionText" class="text-sm sm:text-base font-semibold text-slate-800 leading-relaxed mb-6">
+                            Memuat pertanyaan...
+                        </h3>
+
+                        <!-- Answer Options -->
+                        <div id="optionsContainer" class="space-y-3">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Question Navigation Footer -->
+                    <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <button id="btnPrev" onclick="navigateQuestion(-1)" class="px-4 py-2.5 rounded-xl border border-slate-300 font-semibold text-slate-600 hover:bg-slate-50 text-xs sm:text-sm flex items-center space-x-2 transition">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            <span>Sebelumnya</span>
+                        </button>
+
+                        <button id="btnToggleFlag" onclick="toggleFlagCurrentQuestion()" class="px-3 sm:px-4 py-2.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-700 font-semibold hover:bg-amber-100 text-xs sm:text-sm flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-flag"></i>
+                            <span class="hidden sm:inline">Ragu-ragu</span>
+                        </button>
+
+                        <button id="btnNext" onclick="navigateQuestion(1)" class="px-5 py-2.5 rounded-xl gradient-bg text-white font-bold hover:opacity-90 text-xs sm:text-sm flex items-center space-x-2 shadow-md transition">
+                            <span>Berikutnya</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Palette Grid (1 Col) -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 card-shadow space-y-4">
+                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider border-b border-slate-100 pb-2 flex items-center justify-between">
+                        <span>Navigasi Soal</span>
+                        <i class="fa-solid fa-grip text-slate-400"></i>
+                    </h4>
+
+                    <!-- Palette Grid Buttons -->
+                    <div id="questionGrid" class="grid grid-cols-5 gap-2 max-h-[300px] overflow-y-auto custom-scrollbar p-1">
+                        <!-- Injected by JS -->
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="pt-3 border-t border-slate-100 space-y-2 text-[11px] text-slate-500">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 bg-brand-700 rounded-sm"></span>
+                            <span>Sedang Dibuka</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 bg-emerald-500 rounded-sm"></span>
+                            <span>Sudah Dijawab</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 bg-amber-400 rounded-sm"></span>
+                            <span>Ragu-ragu</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 bg-slate-200 rounded-sm"></span>
+                            <span>Belum Dijawab</span>
+                        </div>
+                    </div>
+
+                    <button onclick="confirmSubmitExam()" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-md transition text-xs flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Selesai & Kirim Jawaban</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. RESULT & DISCUSSION REVIEW VIEW -->
+        <section id="result-page" class="hidden space-y-8">
+            <!-- Student Score Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 card-shadow overflow-hidden">
+                <div class="gradient-bg p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2 text-center md:text-left">
+                        <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Hasil Asesmen Pembelajaran
+                        </span>
+                        <h3 id="resultStudentName" class="text-2xl font-extrabold">Nama Peserta Didik</h3>
+                        <p id="resultStudentMeta" class="text-xs text-teal-100">Kelas: - | Absen: - | Waktu Selesai: -</p>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-center min-w-[180px]">
+                        <span class="block text-xs uppercase text-teal-100 tracking-wider font-semibold">NILAI AKHIR</span>
+                        <span id="resultScore" class="text-5xl font-black tracking-tight text-white">0</span>
+                        <span id="resultPredicate" class="block text-xs font-bold mt-1 text-emerald-300">Predikat</span>
+                    </div>
+                </div>
+
+                <!-- Stats Breakdown Row -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-slate-100 bg-slate-50 text-center p-4">
+                    <div class="p-3">
+                        <span class="block text-xs text-slate-400">Jawaban Benar</span>
+                        <span id="resultCorrectCount" class="text-xl font-bold text-emerald-600">0 / 30</span>
+                    </div>
+                    <div class="p-3">
+                        <span class="block text-xs text-slate-400">Jawaban Salah</span>
+                        <span id="resultIncorrectCount" class="text-xl font-bold text-rose-600">0 / 30</span>
+                    </div>
+                    <div class="p-3">
+                        <span class="block text-xs text-slate-400">Persentase Skor</span>
+                        <span id="resultPercentage" class="text-xl font-bold text-brand-700">0%</span>
+                    </div>
+                    <div class="p-3">
+                        <span class="block text-xs text-slate-400">Status Ketuntasan</span>
+                        <span id="resultStatusBadge" class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 text-slate-700">
+                            -
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Motivational Teacher Note -->
+                <div class="p-6 border-t border-slate-100 bg-white">
+                    <div class="flex items-start space-x-3 bg-teal-50 border border-teal-200 p-4 rounded-2xl">
+                        <i class="fa-solid fa-quote-left text-brand-500 text-xl mt-1"></i>
+                        <div>
+                            <h5 class="font-bold text-brand-800 text-xs uppercase tracking-wider">Pesan & Catatan Umpan Balik Guru</h5>
+                            <p id="resultMotivationalFeedback" class="text-xs text-slate-700 mt-1 leading-relaxed">
+                                Pesan motivasi...
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- CERTIFICATE ACTION BUTTON -->
+                    <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <button onclick="openCertificateModal()" class="w-full sm:w-auto px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-award text-base"></i>
+                            <span>Lihat & Cetak Sertifikat Digital</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review & Explanations Header -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-bold text-slate-800 text-lg">Pembahasan & Evaluasi Soal</h3>
+                    <p class="text-xs text-slate-500">Pelajari penjelasan di bawah ini untuk memperkuat pemahaman konsep Anda.</p>
+                </div>
+                <button onclick="window.print()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Cetak Hasil</span>
+                </button>
+            </div>
+
+            <!-- Question Review Container -->
+            <div id="reviewContainer" class="space-y-6">
+                <!-- Injected by JS -->
+            </div>
+        </section>
+
+        <!-- 5. TEACHER DASHBOARD VIEW -->
+        <section id="teacher-dashboard-page" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <span class="bg-brand-50 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full uppercase">
+                        Portal Administrator Guru
+                    </span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 mt-1">Dashboard Rekapitulasi Asesmen</h2>
+                    <p class="text-xs text-slate-500">Pengampu: Sumila Mahu, S.Pd. | Mata Pelajaran Ekonomi Kelas XI Fase F</p>
+                </div>
+
+    <!-- DIGITAL CERTIFICATE MODAL CONTAINER -->
+    <div id="certificateModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 hidden overflow-y-auto p-4 flex items-center justify-center print:p-0 print:bg-white print:static print:block">
+        <div class="max-w-4xl w-full bg-white rounded-3xl card-shadow overflow-hidden relative border border-slate-200 my-auto print:shadow-none print:border-none print:max-w-none">
+            
+            <!-- Modal Header Actions (Hidden in Print) -->
+            <div class="bg-slate-900 text-white p-4 px-6 flex items-center justify-between print:hidden">
+                <div class="flex items-center space-x-2 text-xs">
+                    <i class="fa-solid fa-certificate text-amber-400"></i>
+                    <span class="font-semibold">Sertifikat Hasil Asesmen Ekonomi</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="window.print()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Cetak / Simpan PDF</span>
+                    </button>
+                    <button onclick="closeCertificateModal()" class="text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CERTIFICATE CANVAS PRINTABLE AREA -->
+            <div id="printableCertificate" class="p-6 sm:p-10 bg-slate-50 relative overflow-hidden text-center select-none border-[12px] border-double border-amber-500/80 m-3 sm:m-6 rounded-2xl shadow-inner">
+                
+                <!-- Background Ornaments -->
+                <div class="absolute -top-16 -left-16 w-32 h-32 bg-brand-700/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-16 -right-16 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Inner Gold Border Frame -->
+                <div class="border-2 border-amber-600/40 p-6 sm:p-8 rounded-xl bg-white relative z-10 space-y-4">
+                    
+                    <!-- Header Logo & School -->
+                    <div class="flex flex-col items-center justify-center space-y-1">
+                        <div class="w-12 h-12 gradient-bg rounded-2xl flex items-center justify-center text-white text-xl font-bold mb-1 shadow-md">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="text-base sm:text-lg font-black tracking-widest text-slate-800 uppercase">SMAS AL-HILAAL TEHORU</h2>
+                        <p class="text-[11px] font-semibold text-brand-700 uppercase tracking-wider">ASESMEN DIGITAL EKONOMI • KELAS XI (FASE F)</p>
+                        <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent my-1"></div>
+                    </div>
+
+                    <!-- Certificate Title -->
+                    <div class="py-2">
+                        <h1 class="text-2xl sm:text-4xl font-serif font-bold text-amber-700 tracking-wide">SERTIFIKAT KELULUSAN</h1>
+                        <p id="certNo" class="text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-1">NO: SERT/EKO-XI/2026/001</p>
+                    </div>
+
+                    <!-- Recipient Info -->
+                    <div class="space-y-2 py-2">
+                        <p class="text-xs text-slate-500 italic">Diberikan secara sah kepada peserta didik:</p>
+                        <h3 id="certStudentName" class="text-xl sm:text-3xl font-extrabold text-slate-900 border-b-2 border-slate-200 inline-block px-8 pb-1 uppercase tracking-wide">
+                            NAMA PESERTA DIDIK
+                        </h3>
+                        <p id="certStudentMeta" class="text-xs font-medium text-slate-600">
+                            Kelas: XI-1 | No. Absen: 01
+                        </p>
+                    </div>
+
+                    <!-- Statement -->
+                    <div class="max-w-xl mx-auto text-xs text-slate-600 leading-relaxed">
+                        Telah menyelesaikan seluruh rangkaian kegiatan <strong>Asesmen Digital Ekonomi - Materi Badan Usaha dalam Perekonomian</strong> Kurikulum Merdeka pada SMAS Al-Hilaal Tehoru dengan perolehan hasil sebagai berikut:
+                    </div>
+
+                    <!-- Score Box -->
+                    <div class="flex justify-center items-center space-x-6 py-2">
+                        <div class="bg-gradient-to-br from-slate-50 to-amber-50 border border-amber-300 rounded-2xl p-3 px-6 text-center shadow-sm">
+                            <span class="block text-[10px] uppercase font-bold text-slate-400">NILAI AKHIR</span>
+                            <span id="certScore" class="text-3xl font-black text-brand-800">0</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-slate-50 to-amber-50 border border-amber-300 rounded-2xl p-3 px-6 text-center shadow-sm">
+                            <span class="block text-[10px] uppercase font-bold text-slate-400">PREDIKAT KETUNTASAN</span>
+                            <span id="certPredicate" class="text-base font-extrabold text-emerald-700 mt-1 block">Sangat Baik</span>
+                        </div>
+                    </div>
+
+                    <!-- Date & Signatures -->
+                    <div class="pt-6 grid grid-cols-2 gap-4 text-xs text-slate-700 items-end">
+                        <!-- Left: Digital Seal / Stamp -->
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="w-20 h-20 border-2 border-dashed border-teal-600/40 rounded-full flex items-center justify-center p-1 relative text-teal-800">
+                                <div class="w-full h-full border border-teal-600/30 rounded-full flex flex-col items-center justify-center text-[8px] font-bold uppercase text-center p-1 leading-tight">
+                                    <i class="fa-solid fa-ribbon text-sm text-amber-500 mb-0.5"></i>
+                                    <span>TERVERIFIKASI DIGITAL</span>
+                                </div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 mt-1">Dokumen Sah Terverifikasi System</span>
+                        </div>
+
+                        <!-- Right: Teacher Signature -->
+                        <div class="text-center space-y-1">
+                            <p id="certDate" class="text-[11px] text-slate-500">Tehoru, 3 November 2026</p>
+                            <p class="text-[11px] font-semibold text-slate-700">Guru Pengampu Mata Pelajaran,</p>
+                            <div class="h-12 flex items-center justify-center font-serif text-lg font-bold italic text-brand-900 border-b border-slate-300 max-w-[180px] mx-auto">
+                                Sumila Mahu, S.Pd.
+                            </div>
+                            <p class="text-[10px] text-slate-500 font-medium">NIP. - / Guru Ekonomi</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT APPLICATION LOGIC -->
+    <script>
+        /* ----------------------------------------------------
+           1. QUESTION BANK (30 Items Contextual HOTS Economy)
+           ---------------------------------------------------- */
+        const questionBank = [
+            // Q1 - Q5: Pengertian & Perbedaan Badan Usaha vs Perusahaan
+            {
+                id: 1,
+                topic: "Konsep Dasar Badan Usaha",
+                difficulty: "Mudah",
+                question: "Manakah pernyataan di bawah ini yang paling tepat menggambarkan perbedaan mendasar antara Badan Usaha dan Perusahaan?",
+                options: [
+                    "Badan usaha adalah tempat berlangsungnya produksi, sedangkan perusahaan adalah lembaga hukum pengelola modal.",
+                    "Badan usaha bertujuan mencari keuntungan akademis, sedangkan perusahaan bertujuan melayani sosial semata.",
+                    "Badan usaha merupakan kesatuan hukum dan ekonomi yang bertujuan mencari keuntungan, sedangkan perusahaan adalah alat atau tempat teknis untuk menghasilkan barang/jasa.",
+                    "Badan usaha selalu dimiliki oleh negara, sedangkan perusahaan selalu dimiliki swasta.",
+                    "Tidak ada perbedaan mendasar, kedua istilah tersebut persis identik dalam hukum perekonomian Indonesia."
+                ],
+                answer: 2,
+                explanation: "Badan usaha adalah kesatuan yuridis (hukum) dan ekonomis yang memanfaatkan faktor produksi untuk mencari keuntungan. Sementara perusahaan adalah unit teknis tempat dilakukannya kegiatan produksi."
+            },
+            {
+                id: 2,
+                topic: "Konsep Dasar Badan Usaha",
+                difficulty: "Sedang",
+                question: "Ibu Rahma mengelola usaha pembuatan manisan pala khas Tehoru di rumahnya dan mendaftarkan usahanya sebagai badan hukum agar bisa mengajukan pinjaman modal di bank. Hubungan antara pabrik manisan dan legalitas usaha Ibu Rahma adalah...",
+                options: [
+                    "Pabrik pembuatan manisan adalah badan usaha, sedangkan pendaftaran hukumnya adalah perusahaan.",
+                    "Pabrik tempat mengolah pala adalah perusahaan, sedangkan status yuridis ekonomis yang terdaftar adalah badan usaha.",
+                    "Keduanya dinamakan badan hukum koperasi.",
+                    "Keduanya hanya berupa perusahaan tanpa keterikatan badan usaha.",
+                    "Pabrik manisan merupakan BUMN daerah Maluku."
+                ],
+                answer: 1,
+                explanation: "Pabrik tempat pengolahan teknis barang dinamakan 'Perusahaan', sedangkan entitas hukum yang memiliki badan hukum dan izin finansial dinamakan 'Badan Usaha'."
+            },
+            {
+                id: 3,
+                topic: "Konsep Dasar Badan Usaha",
+                difficulty: "Mudah",
+                question: "Tujuan utama dibentuknya suatu badan usaha komersial pada umumnya dalam perekonomian pasar adalah...",
+                options: [
+                    "Menghabiskan modal investasi secepat mungkin.",
+                    "Mendapatkan keuntungan (laba) secara optimal untuk keberlangsungan usaha.",
+                    "Menyediakan fasilitas umum secara gratis tanpa memperhitungkan biaya produksi.",
+                    "Menyaingi seluruh usaha kecil di wilayah sekitarnya.",
+                    "Menghindari kewajiban membayar pajak pada pemerintah."
+                ],
+                answer: 1,
+                explanation: "Secara ekonomis, motif utama badan usaha komersial adalah memperoleh laba yang wajar dan optimal demi menjaga kontinuitas operasional perusahaan."
+            },
+            {
+                id: 4,
+                topic: "Konsep Dasar Badan Usaha",
+                difficulty: "Sedang",
+                question: "Di bawah ini yang merupakan unsur kesatuan yuridis dalam definisi badan usaha adalah...",
+                options: [
+                    "Adanya mesin produksi dan gedung pabrik.",
+                    "Adanya tenaga kerja buruh lapangan.",
+                    "Adanya akta pendirian, pendaftaran legalitas hukum, dan hak kewajiban menurut undang-undang.",
+                    "Adanya persaingan harga di pasar tradisional.",
+                    "Adanya aktivitas penjualan barang di toko ritel."
+                ],
+                answer: 2,
+                explanation: "Kesatuan yuridis berarti badan usaha didirikan berdasarkan norma hukum yang berlaku, memiliki akta pendirian, status hukum, serta hak dan kewajiban perundang-undangan."
+            },
+            {
+                id: 5,
+                topic: "Konsep Dasar Badan Usaha",
+                difficulty: "Sulit",
+                question: "Sebuah bengkel kapal nelayan di pesisir Tehoru mempekerjakan 5 orang montir. Bengkel tersebut belum terdaftar di dinas perizinan resmi. Berdasarkan konsep ekonomi, bengkel tersebut lebih tepat dikategorikan sebagai...",
+                options: [
+                    "Badan Usaha Berbadan Hukum Publik.",
+                    "Perusahaan yang belum memiliki status legalitas badan usaha resmi.",
+                    "Koperasi Serba Usaha.",
+                    "Badan Usaha Milik Daerah.",
+                    "Perseroan Terbatas Terbuka."
+                ],
+                answer: 1,
+                explanation: "Secara teknis operasional bengkel tersebut adalah unit perusahaan karena menghasilkan jasa perbaikan, tetapi belum memenuhi kualifikasi kesatuan yuridis badan usaha yang sah di mata hukum."
+            },
+
+            // Q6 - Q10: Fungsi & Peran Badan Usaha
+            {
+                id: 6,
+                topic: "Fungsi & Peran Badan Usaha",
+                difficulty: "Mudah",
+                question: "Manakah di bawah ini yang termasuk dalam fungsi komersial dari suatu badan usaha?",
+                options: [
+                    "Fungsi penyediaan lapangan kerja bagi masyarakat sekitar.",
+                    "Fungsi manajemen (perencanaan, pengorganisasian, pengarahan, pengawasan) dan fungsi operasional (pemasaran, keuangan, produksi).",
+                    "Fungsi pelestarian lingkungan hidup dan AMDAL.",
+                    "Fungsi pemungutan pajak negara.",
+                    "Fungsi stabilitas politik nasional."
+                ],
+                answer: 1,
+                explanation: "Fungsi komersial badan usaha mencakup fungsi manajemen dan operasional yang bertujuan mencapai efisiensi operasional guna menghasilkan laba."
+            },
+            {
+                id: 7,
+                topic: "Fungsi & Peran Badan Usaha",
+                difficulty: "Sedang",
+                question: "Badan usaha yang beroperasi di wilayah Seram Bagian Timur/Malteng menyerap ratusan tenaga kerja lokal sehingga mengurangi angka pengangguran. Hal ini mencerminkan fungsi badan usaha sebagai...",
+                options: [
+                    "Fungsi Komersial Finansial",
+                    "Fungsi Sosial",
+                    "Fungsi Politik",
+                    "Fungsi Fiskal Moneter",
+                    "Fungsi Yuridis Formal"
+                ],
+                answer: 1,
+                explanation: "Fungsi sosial berhubungan dengan kontribusi badan usaha terhadap lingkungan sosial, termasuk penyediaan lapangan kerja dan peningkatan kesejahteraan warga setempat."
+            },
+            {
+                id: 8,
+                topic: "Fungsi & Peran Badan Usaha",
+                difficulty: "Mudah",
+                question: "Peran badan usaha dalam pembangunan ekonomi nasional ditunjukkan oleh aktivitas berikut, KECUALI...",
+                options: [
+                    "Menambah penerimaan negara melalui pembayaran pajak pendapatan.",
+                    "Meningkatkan Pendapatan Nasional (PDB).",
+                    "Mendorong inovasi teknologi dan efisiensi produk.",
+                    "Memicu konflik sosial dan kelangkaan barang di pasar.",
+                    "Menciptakan kesepatan kerja baru."
+                ],
+                answer: 3,
+                explanation: "Memicu konflik dan kelangkaan merupakan dampak negatif yang dihindari, bukan peran positif badan usaha dalam perekonomian."
+            },
+            {
+                id: 9,
+                topic: "Fungsi & Peran Badan Usaha",
+                difficulty: "Sulit",
+                question: "Pada masa krisis ekonomi, badan usaha yang mampu bertahan dan mengolah sumber daya lokal (seperti minyak kayu putih dan cengkeh) membantu pemerintah menjaga stabilitas mata uang melalui ekspor. Peran ini dikategorikan sebagai...",
+                options: [
+                    "Agen Pembangunan (Agent of Development) dan Penghasil Devisa Negara.",
+                    "Pengontrol Tarif Pajak Daerah.",
+                    "Pengatur Kebijakan Suku Bunga Bank Sentral.",
+                    "Regulator Pasar Modal.",
+                    "Penyedia Jasa Jaminan Sosial Gratis."
+                ],
+                answer: 0,
+                explanation: "Badan usaha yang mengespor produk lokal berkonflik positif mendorong devisa dan bertindak sebagai agen pembangunan nasional."
+            },
+            {
+                id: 10,
+                topic: "Fungsi & Peran Badan Usaha",
+                difficulty: "Sedang",
+                question: "Fungsi pembangunan ekonomi yang dijalankan oleh badan usaha tercermin dari tindakan...",
+                options: [
+                    "Menutup akses warga lokal terhadap sumber daya alam.",
+                    "Melakukan perbaikan infrastruktur jalan sekitar pabrik melalui program CSR (Corporate Social Responsibility).",
+                    "Mengimpor seluruh bahan baku dari luar negeri secara terus menerus.",
+                    "Meminimalkan pembayaran upah di bawah standar yang ditetapkan.",
+                    "Menaikkan harga jual barang kebutuhan pokok secara mendadak."
+                ],
+                answer: 1,
+                explanation: "Program CSR perbaikan infrastruktur merupakan bukti fungsi sosial dan peran badan usaha dalam membantu pembangunan daerah sekitar."
+            },
+
+            // Q11 - Q15: BUMN (Badan Usaha Milik Negara)
+            {
+                id: 11,
+                topic: "BUMN (Badan Usaha Milik Negara)",
+                difficulty: "Mudah",
+                question: "Berdasarkan kepemilikan modalnya, modal BUMN seluruhnya atau paling sedikit ... dikuasai oleh Negara Republik Indonesia.",
+                options: [
+                    "25%",
+                    "33%",
+                    "50%",
+                    "51%",
+                    "100%"
+                ],
+                answer: 3,
+                explanation: "Menurut UU No. 19 Tahun 2003 tentang BUMN, modal BUMN paling sedikit 51% dimiliki oleh Negara Republik Indonesia."
+            },
+            {
+                id: 12,
+                topic: "BUMN (Badan Usaha Milik Negara)",
+                difficulty: "Sedang",
+                question: "PT PLN (Persero) bertugas mendistribusikan listrik hingga ke pelosok Tehoru dan desa-desa pedalaman Maluku. Alasan utama sektor listrik dikelola oleh BUMN Persero adalah...",
+                options: [
+                    "Agar PLN dapat memasang harga setinggi-tingginya demi keuntungan investor luar.",
+                    "Karena cabang produksi listrik menguasai hajat hidup orang banyak sehingga wajib dikuasai negara sesuai Pasal 33 UUD 1945.",
+                    "Agar perusahaan swasta asing tidak perlu membayar pajak.",
+                    "Karena masyarakat tidak mampu mengoperasikan alat elektronik.",
+                    "Karena listrik bukan merupakan barang ekonomis."
+                ],
+                answer: 1,
+                explanation: "Sesuai Pasal 33 UUD 1945, cabang produksi yang penting dan menguasai hajat hidup orang banyak dikuasai oleh negara melalui BUMN."
+            },
+            {
+                id: 13,
+                topic: "BUMN (Badan Usaha Milik Negara)",
+                difficulty: "Mudah",
+                question: "Dua bentuk utama BUMN di Indonesia saat ini adalah...",
+                options: [
+                    "Perjan dan Firma",
+                    "Perseroan Terbatas (PT Persero) dan Perusahaan Umum (Perum)",
+                    "CV dan Koperasi",
+                    "BUMD dan BUMS",
+                    "PT Tbk dan Yayasan"
+                ],
+                answer: 1,
+                explanation: "Berdasarkan undang-undang BUMN, jenis BUMN terbagi dua yaitu PT Persero (berorientasi laba) dan Perum (berorientasi kemanfaatan umum)."
+            },
+            {
+                id: 14,
+                topic: "BUMN (Badan Usaha Milik Negara)",
+                difficulty: "Sulit",
+                question: "Perum Damri bertugas menyediakan moda transportasi darat dengan tarif terjangkau di wilayah perintis. Karakteristik utama dari bentuk BUMN Perum adalah...",
+                options: [
+                    "Seluruh sahamnya diperjualbelikan secara bebas di Bursa Efek Indonesia.",
+                    "Bertujuan menyediakan barang/jasa untuk kemanfaatan umum sekaligus memperoleh keuntungan terukur.",
+                    "Pemilik modal utamanya adalah pemerintah daerah kabupaten.",
+                    "Organ tertingginya adalah Rapat Umum Pemegang Saham Swasta.",
+                    "Tidak memiliki kekayaan negara yang dipisahkan."
+                ],
+                answer: 1,
+                explanation: "Perum (Perusahaan Umum) memiliki tujuan utama menyelenggarakan kemanfaatan umum berupa penyediaan barang/jasa bermutu tinggi sekaligus mengejar keuntungan berbasis prinsip perusahaan."
+            },
+            {
+                id: 15,
+                topic: "BUMN (Badan Usaha Milik Negara)",
+                difficulty: "Sedang",
+                question: "Berikut ini yang BUKAN merupakan contoh BUMN yang beroperasi di bidang perbankan dan keuangan di Indonesia adalah...",
+                options: [
+                    "PT Bank Rakyat Indonesia (Persero) Tbk",
+                    "PT Bank Mandiri (Persero) Tbk",
+                    "PT Bank Negara Indonesia (Persero) Tbk",
+                    "PT Bank Central Asia Tbk (BCA)",
+                    "PT Bank Tabungan Negara (Persero) Tbk"
+                ],
+                answer: 3,
+                explanation: "PT Bank Central Asia Tbk (BCA) merupakan BUMS (Badan Usaha Milik Swasta), sedangkan BRI, Mandiri, BNI, dan BTN adalah BUMN."
+            },
+
+            // Q16 - Q20: BUMD (Badan Usaha Milik Daerah)
+            {
+                id: 16,
+                topic: "BUMD (Badan Usaha Milik Daerah)",
+                difficulty: "Mudah",
+                question: "Badan Usaha Milik Daerah (BUMD) adalah badan usaha yang seluruh atau sebagian besar modalnya dimiliki oleh...",
+                options: [
+                    "Pemerintah Pusat (Kementerian BUMN)",
+                    "Pemerintah Daerah (Provinsi / Kabupaten / Kota)",
+                    "Investor Swasta Asing",
+                    "Bank Dunia",
+                    "Anggota Koperasi Daerah"
+                ],
+                answer: 1,
+                explanation: "BUMD didirikan oleh Pemerintah Daerah di mana modalnya berasal dari kekayaan daerah yang dipisahkan."
+            },
+            {
+                id: 17,
+                topic: "BUMD (Badan Usaha Milik Daerah)",
+                difficulty: "Sedang",
+                question: "Bank Maluku Malut merupakan salah satu BUMD yang beroperasi di wilayah Kepulauan Maluku. Peran utama Bank Maluku Malut terhadap pembangunan daerah adalah...",
+                options: [
+                    "Mencetak uang kertas baru untuk masyarakat daerah.",
+                    "Membantu meningkatkan Pendapatan Asli Daerah (PAD) serta mendorong pertumbuhan ekonomi masyarakat lokal.",
+                    "Menentukan tarif pajak pertambahan nilai daerah.",
+                    "Menghapus seluruh pinjaman nasabah di wilayah pesisir.",
+                    "Mengambil alih fungsi DPRD dalam menyusun APBD."
+                ],
+                answer: 1,
+                explanation: "BUMD berperan sebagai salah satu sumber pendorong pertumbuhan ekonomi daerah dan penyumbang Pendapatan Asli Daerah (PAD) melalui pembagian dividen."
+            },
+            {
+                id: 18,
+                topic: "BUMD (Badan Usaha Milik Daerah)",
+                difficulty: "Mudah",
+                question: "Perusahaan Daerah Air Minum (PDAM) merupakan contoh BUMD yang melayani kebutuhan dasar masyarakat berupa penyediaan air bersih. Fungsi utama pendirian PDAM tersebut adalah fungsi...",
+                options: [
+                    "Politik Luar Negeri",
+                    "Pelayanan Publik dan Kemanfaatan Umum bagi Warga Daerah",
+                    "Spekulasi Saham",
+                    "Monopoli Swasta",
+                    "Fiskal Pusat"
+                ],
+                answer: 1,
+                explanation: "PDAM dibentuk BUMD untuk pemenuhan pelayanan publik penyediaan sarana vital (air bersih) bagi masyarakat daerah."
+            },
+            {
+                id: 19,
+                topic: "BUMD (Badan Usaha Milik Daerah)",
+                difficulty: "Sulit",
+                question: "Manakah tantangan utama yang sering dihadapi BUMD di berbagai daerah di Indonesia sehingga memerlukan reformasi manajemen?",
+                options: [
+                    "Terlalu banyak modal asing yang masuk.",
+                    "Kekurangan tenaga kerja karena masyarakat menolak bekerja di BUMD.",
+                    "Risiko birokratisasi, intervensi politik lokal, dan kurangnya profesionalisme manajerial.",
+                    "Larangan dari pemerintah pusat untuk membuka cabang di daerah.",
+                    "Tidak diizinkan mencari keuntungan dalam bentuk apapun."
+                ],
+                answer: 2,
+                explanation: "Tantangan umum BUMD meliputi intervensi politik lokal, birokratisasi berlebih, dan perlunya peningkatan profesionalisme manajerial."
+            },
+            {
+                id: 20,
+                topic: "BUMD (Badan Usaha Milik Daerah)",
+                difficulty: "Sedang",
+                question: "Apabila suatu BUMD bidang transportasi laut daerah mengalami kemajuan pesat dan mencetak laba bersih, maka keuntungan tersebut akan dialokasikan untuk...",
+                options: [
+                    "Dikembalikan ke kas negara pemerintah pusat seluruhnya.",
+                    "Masuk ke APBD sebagai Pendapatan Asli Daerah (PAD) untuk membiayai pembangunan daerah.",
+                    "Bagi-bagi kepada seluruh warga negara Indonesia.",
+                    "Membeli saham perusahaan asing di luar negeri.",
+                    "Membiayai pemilu nasional."
+                ],
+                answer: 1,
+                explanation: "Dividen hasil usaha BUMD akan disetorkan ke Kas Daerah dan dicatat sebagai Pendapatan Asli Daerah (PAD) untuk pembangunan daerah."
+            },
+
+            // Q21 - Q25: BUMS (Badan Usaha Milik Swasta)
+            {
+                id: 21,
+                topic: "BUMS (Badan Usaha Milik Swasta)",
+                difficulty: "Mudah",
+                question: "Badan Usaha Milik Swasta (BUMS) adalah badan usaha yang seluruh modalnya dimiliki oleh...",
+                options: [
+                    "Pemerintah Daerah dan Pusat",
+                    "Perorangan atau Sekelompok Pihak Swasta",
+                    "Anggota Koperasi Indonesia",
+                    "Negara Sahabat",
+                    "Organisasi PBB"
+                ],
+                answer: 1,
+                explanation: "BUMS didirikan, dimiliki, dan dikelola oleh pihak swasta (perorangan maupun persekutuan) tanpa penyertaan modal negara."
+            },
+            {
+                id: 22,
+                topic: "BUMS (Badan Usaha Milik Swasta)",
+                difficulty: "Sedang",
+                question: "Bapak Said dan Bapak Usman sepakat mendirikan usaha pengolahan ikan cakalang asap di Tehoru dengan nama 'CV Seram Bahari'. Dalam bentuk Persekutuan Komanditer (CV), Bapak Said menjadi Sekutu Aktif sedangkan Bapak Usman menjadi Sekutu Pasif. Artinya...",
+                options: [
+                    "Bapak Said hanya menyetor modal tanpa ikut mengurus usaha, sedangkan Bapak Usman mengurus operasional.",
+                    "Bapak Said mengelola operasional harian dan bertanggung jawab penuh, sedangkan Bapak Usman hanya menyetor modal dengan tanggung jawab terbatas.",
+                    "Keduanya tidak boleh mengambil keuntungan usaha.",
+                    "Keduanya memiliki tanggung jawab terbatas pada saham di bursa.",
+                    "Usaha tersebut otomatis berstatus BUMN."
+                ],
+                answer: 1,
+                explanation: "Dalam CV, Sekutu Aktif (Komplementer) mengelola operasional dengan tanggung jawab tak terbatas, sedangkan Sekutu Pasif (Komanditer) hanya menyetor modal dengan tanggung jawab sebesar modal yang disetor."
+            },
+            {
+                id: 23,
+                topic: "BUMS (Badan Usaha Milik Swasta)",
+                difficulty: "Mudah",
+                question: "Ciri utama dari badan usaha berbentuk Perseroan Terbatas (PT) adalah...",
+                options: [
+                    "Tanggung jawab pemilik/pemegang saham bersifat tidak terbatas sampai harta pribadi.",
+                    "Modal terbagi atas saham-saham, dan tanggung jawab pemegang saham terbatas sebesar nilai nominal saham yang dimiliki.",
+                    "Didirikan minimal oleh 100 orang buruh pabrik.",
+                    "Tidak memerlukan akta notaris dalam pendiriannya.",
+                    "Dikepalai oleh kepala dinas pemerintah."
+                ],
+                answer: 1,
+                explanation: "Karakteristik utama PT adalah modalnya terbagi dalam bentuk lembar saham dan tanggung jawab pemegang saham terbatas (limited liability) pada modal yang disetor."
+            },
+            {
+            // Q24 - Q30
+            {
+                id: 24,
+                topic: "BUMS (Badan Usaha Milik Swasta)",
+                difficulty: "Sulit",
+                question: "Dua orang sahabat mendirikan usaha dagang 'Firma Nusa Tenggara'. Saat usaha mengalami kebangkrutan dan menyisakan utang Rp100 juta, maka pelunasan utang tersebut dilakukan dengan...",
+                options: [
+                    "Hanya menggunakan kas tersisa di toko.",
+                    "Ditanggung oleh pemerintah kabupaten.",
+                    "Harta pribadi dari masing-masing sekutu firma hingga utang lunas secara solider.",
+                    "Mengajukan kebangkrutan tanpa perlu membayar sisa utang.",
+                    "Menjual saham perusahaan di bursa efek."
+                ],
+                answer: 2,
+                explanation: "Dalam Firma, tanggung jawab para pemilik/sekutu bersifat tidak terbatas (unlimited liability) dan tanggung jawab bersama/solider hingga harta pribadi."
+            },
+            {
+                id: 25,
+                topic: "BUMS (Badan Usaha Milik Swasta)",
+                difficulty: "Sedang",
+                question: "Manakah contoh BUMS yang beroperasi di sektor ritel modern Indonesia?",
+                options: [
+                    "PT Indomarco Prismatama (Indomaret) dan PT Sumber Alfaria Trijaya Tbk (Alfamart)",
+                    "PT Perusahaan Gas Negara (Persero)",
+                    "PT Kereta Api Indonesia (Persero)",
+                    "Perum Bulog",
+                    "Bank Maluku Malut"
+                ],
+                answer: 0,
+                explanation: "Indomaret dan Alfamart merupakan bentuk BUMS dalam jaringan ritel swasta nasional."
+            },
+            {
+                id: 26,
+                topic: "Koperasi",
+                difficulty: "Mudah",
+                question: "Prinsip utama yang membedakan Koperasi dari badan usaha lainnya di Indonesia adalah...",
+                options: [
+                    "Koperasi mengutamakan modal sebesar-besarnya dari luar negeri.",
+                    "Koperasi berlandaskan kekeluargaan dan bertujuan memajukan kesejahteraan anggota pada khususnya serta masyarakat pada umumnya.",
+                    "Koperasi dipimpin oleh direktur yang ditunjuk oleh menteri.",
+                    "Keuntungan koperasi dibagi berdasarkan jumlah saham terbanyak.",
+                    "Koperasi hanya boleh beroperasi di area perkotaan."
+                ],
+                answer: 1,
+                explanation: "Sesuai UU No. 25 Tahun 1992, Koperasi adalah badan usaha berlandaskan asas kekeluargaan dan bertujuan meningkatkan kesejahteraan anggotanya."
+            },
+            {
+                id: 27,
+                topic: "Koperasi",
+                difficulty: "Sedang",
+                question: "Landasan idiil Koperasi Indonesia adalah ... sedangkan landasan strukturalnya adalah ...",
+                options: [
+                    "Pancasila dan UUD 1945 Pasal 33 Ayat 1",
+                    "UUD 1945 dan Kebijakan Menteri",
+                    "Pancasila dan Gotong Royong",
+                    "Bapak Koperasi Indonesia dan TAP MPR",
+                    "Hukum Adat dan Peraturan Daerah"
+                ],
+                answer: 0,
+                explanation: "Landasan idiil koperasi adalah Pancasila, sedangkan landasan strukturalnya adalah UUD 1945 (khususnya Pasal 33 ayat 1)."
+            },
+            {
+                id: 28,
+                topic: "Koperasi",
+                difficulty: "Mudah",
+                question: "Pembagian Sisa Hasil Usaha (SHU) dalam Koperasi dilakukan secara adil berdasarkan...",
+                options: [
+                    "Tingkat pendidikan anggota.",
+                    "Besarnya partisipasi jasa usaha dan transaksi anggota pada koperasi.",
+                    "Nomor urut pendaftaran anggota.",
+                    "Jumlah keluarga yang ditanggung anggota.",
+                    "Keputusan sepihak ketua koperasi."
+                ],
+                answer: 1,
+                explanation: "SHU dibagi secara transparan dan adil berbanding lurus dengan besarnya jasa/transaksi bisnis anggota terhadap koperasinya."
+            },
+            {
+                id: 29,
+                topic: "Koperasi",
+                difficulty: "Sedang",
+                question: "Perangkat organisasi Koperasi yang memegang kekuasaan tertinggi dalam pengambilan keputusan adalah...",
+                options: [
+                    "Pengurus Koperasi",
+                    "Pengawas Koperasi",
+                    "Rapat Anggota (RAT)",
+                    "Dinas Koperasi Provinsi",
+                    "Manajer Operasional"
+                ],
+                answer: 2,
+                explanation: "Rapat Anggota (RAT) merupakan pemegang kekuasaan tertinggi dalam struktur tata kelola Koperasi."
+            },
+            {
+                id: 30,
+                topic: "Koperasi",
+                difficulty: "Sulit",
+                question: "Di Kecamatan Tehoru terdapat Koperasi Simpan Pinjam dan Koperasi Nelayan. Jika nelayan memanfaatkan koperasi untuk membeli jaring dan memasarkan hasil tangkapan tanpa perantara tengkulak, maka peran Koperasi tersebut adalah...",
+                options: [
+                    "Mematikan usaha pedagang eceran.",
+                    "Membebaskan anggota dari krisis keuangan global.",
+                    "Meningkatkan daya tawar (bargaining position) ekonomi nelayan dan memotong rantai distribusi yang merugikan.",
+                    "Mengambil alih hak milik atas perahu nelayan.",
+                    "Mengurangi modal kerja nelayan."
+                ],
+                answer: 2,
+                explanation: "Koperasi nelayan membantu meningkatkan daya tawar ekonomi para nelayan, memotong rantai tengkulak, dan memperkuat kesejahteraan bersama."
+            }
+        ];
+
+        /* ----------------------------------------------------
+           2. GLOBAL STATE VARIABLES
+           ---------------------------------------------------- */
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // { qIndex: selectedOptionIndex }
+        let flaggedQuestions = {}; // { qIndex: boolean }
+        let examTimer = null;
+        let timeLeft = 60 * 60; // 60 minutes in seconds
+        let currentStudent = null;
+        let chartInstance = null;
+        let currentSubmissionData = null;
+
+        const STORAGE_KEY = "asesmen_ekonomi_tehoru_results_v1";
+
+        /* ----------------------------------------------------
+           3. ROUTING / NAVIGATION LOGIC
+           ---------------------------------------------------- */
+        function navigateTo(pageId) {
+            const pages = ['landing-page', 'student-reg-page', 'assessment-page', 'result-page', 'teacher-dashboard-page'];
+            pages.forEach(p => {
+                const el = document.getElementById(p);
+                if (el) el.classList.add('hidden');
+            });
+            const target = document.getElementById(pageId);
+            if (target) target.classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (pageId === 'teacher-dashboard-page') {
+                renderTeacherDashboard();
+            }
+        }
+
+        /* ----------------------------------------------------
+           4. STUDENT REGISTRATION & EXAM START
+           ---------------------------------------------------- */
+        function handleStartExam(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const cls = document.getElementById('studentClass').value;
+            const absen = document.getElementById('studentAbsen').value.trim();
+
+            if (!name || !cls || !absen) {
+                alert("Harap lengkapi semua bidang identitas!");
+                return;
+            }
+
+            currentStudent = {
+                name: name,
+                class: cls,
+                absen: absen,
+                startTime: new Date().toISOString()
+            };
+
+            // Reset states
+            userAnswers = {};
+            flaggedQuestions = {};
+            currentQuestionIndex = 0;
+            timeLeft = 60 * 60;
+
+            // UI Setups
+            document.getElementById('activeStudentTitle').innerText = currentStudent.name;
+            document.getElementById('activeStudentSub').innerText = `Kelas: ${currentStudent.class} | No. Absen: ${currentStudent.absen}`;
+
+            buildQuestionGrid();
+            renderQuestion(0);
+            startTimer();
+
+            navigateTo('assessment-page');
+        }
+
+        /* ----------------------------------------------------
+           5. TIMER MANAGEMENT
+           ---------------------------------------------------- */
+        function startTimer() {
+            clearInterval(examTimer);
+            updateTimerDisplay();
+            examTimer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 0) {
+                    clearInterval(examTimer);
+                    alert("Waktu pengerjaan telah habis! Sistem akan mengumpulkan jawaban Anda secara otomatis.");
+                    processFinalSubmit();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            const formatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            const displayEl = document.getElementById('timerDisplay');
+            if (displayEl) {
+                displayEl.innerText = formatted;
+                if (timeLeft <= 300) { // < 5 mins warning
+                    displayEl.classList.add('text-rose-600', 'animate-bounce');
+                } else {
+                    displayEl.classList.remove('text-rose-600', 'animate-bounce');
+                }
+            }
+        }
+
+        /* ----------------------------------------------------
+           6. QUESTION ENGINE & GRID PALETTE
+           ---------------------------------------------------- */
+        function renderQuestion(index) {
+            currentQuestionIndex = index;
+            const qData = questionBank[index];
+
+            document.getElementById('currentQNumText').innerText = index + 1;
+            document.getElementById('questionTopicBadge').innerText = `Topik: ${qData.topic}`;
+            document.getElementById('questionDifficultyBadge').innerText = `Tingkat: ${qData.difficulty}`;
+            document.getElementById('questionText').innerText = `${index + 1}. ${qData.question}`;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            const optionLabels = ['A', 'B', 'C', 'D', 'E'];
+
+            qData.options.forEach((optText, optIdx) => {
+                const isSelected = userAnswers[index] === optIdx;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.onclick = () => selectOption(index, optIdx);
+
+                btn.className = `w-full text-left p-3.5 sm:p-4 rounded-2xl border transition duration-200 flex items-start space-x-3 text-xs sm:text-sm ${
+                    isSelected 
+                        ? 'bg-brand-50 border-brand-700 text-brand-900 ring-2 ring-brand-700/20 font-medium' 
+                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                }`;
+
+                btn.innerHTML = `
+                    <span class="w-7 h-7 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 ${
+                        isSelected ? 'bg-brand-700 text-white' : 'bg-white border border-slate-300 text-slate-600'
+                    }">${optionLabels[optIdx]}</span>
+                    <span class="mt-0.5 leading-relaxed">${optText}</span>
+                `;
+
+                optionsContainer.appendChild(btn);
+            });
+
+            // Update Nav Buttons
+            document.getElementById('btnPrev').disabled = index === 0;
+            document.getElementById('btnPrev').style.opacity = index === 0 ? "0.4" : "1";
+
+            const btnNext = document.getElementById('btnNext');
+            if (index === questionBank.length - 1) {
+                btnNext.innerHTML = `<span>Review Final</span> <i class="fa-solid fa-check-double"></i>`;
+            } else {
+                btnNext.innerHTML = `<span>Berikutnya</span> <i class="fa-solid fa-chevron-right"></i>`;
+            }
+
+            // Flag state button
+            const flagBtn = document.getElementById('btnToggleFlag');
+            if (flaggedQuestions[index]) {
+                flagBtn.classList.remove('bg-amber-50', 'text-amber-700');
+                flagBtn.classList.add('bg-amber-500', 'text-white');
+            } else {
+                flagBtn.classList.add('bg-amber-50', 'text-amber-700');
+                flagBtn.classList.remove('bg-amber-500', 'text-white');
+            }
+
+            updateQuestionGridUI();
+        }
+
+        function selectOption(qIndex, optIndex) {
+            userAnswers[qIndex] = optIndex;
+            renderQuestion(qIndex);
+        }
+
+        function navigateQuestion(step) {
+            const nextIdx = currentQuestionIndex + step;
+            if (nextIdx >= 0 && nextIdx < questionBank.length) {
+                renderQuestion(nextIdx);
+            }
+        }
+
+        function toggleFlagCurrentQuestion() {
+            flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
+            renderQuestion(currentQuestionIndex);
+        }
+
+        function buildQuestionGrid() {
+            const grid = document.getElementById('questionGrid');
+            grid.innerHTML = '';
+
+            questionBank.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `grid-btn-${idx}`;
+                btn.onclick = () => renderQuestion(idx);
+                btn.className = `h-9 rounded-xl font-bold text-xs flex items-center justify-center transition border`;
+                btn.innerText = idx + 1;
+                grid.appendChild(btn);
+            });
+            updateQuestionGridUI();
+        }
+
+        function updateQuestionGridUI() {
+            questionBank.forEach((_, idx) => {
+                const btn = document.getElementById(`grid-btn-${idx}`);
+                if (!btn) return;
+
+                const isCurrent = idx === currentQuestionIndex;
+                const isAnswered = userAnswers.hasOwnProperty(idx);
+                const isFlagged = flaggedQuestions[idx];
+
+                btn.className = `h-9 rounded-xl font-bold text-xs flex items-center justify-center transition border `;
+
+                if (isCurrent) {
+                    btn.classList.add('bg-brand-700', 'text-white', 'border-brand-700', 'ring-2', 'ring-brand-700/30');
+                } else if (isFlagged) {
+                    btn.classList.add('bg-amber-400', 'text-slate-900', 'border-amber-500');
+                } else if (isAnswered) {
+                    btn.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+                } else {
+                    btn.classList.add('bg-slate-100', 'text-slate-600', 'border-slate-200', 'hover:bg-slate-200');
+                }
+            });
+        }
+
+        /* ----------------------------------------------------
+           7. CONFIRMATION & EXAM SUBMISSION
+           ---------------------------------------------------- */
+        function confirmSubmitExam() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const total = questionBank.length;
+            const unanswered = total - answeredCount;
+
+            const confirmText = document.getElementById('confirmUnansweredText');
+            if (unanswered > 0) {
+                confirmText.innerHTML = `Masih terdapat <strong class="text-rose-600">${unanswered} soal</strong> yang belum Anda jawab. Yakin ingin mengumpulkan sekarang?`;
+            } else {
+                confirmText.innerHTML = `Seluruh 30 soal telah dijawab. Klik tombol di bawah untuk memproses nilai Anda.`;
+            }
+
+            document.getElementById('confirmSubmitModal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmSubmitModal').classList.add('hidden');
+        }
+
+        function processFinalSubmit() {
+            closeConfirmModal();
+            clearInterval(examTimer);
+
+            // Calculate Score
+            let correctCount = 0;
+            questionBank.forEach((q, idx) => {
+                if (userAnswers[idx] === q.answer) {
+                    correctCount++;
+                }
+            });
+
+            const totalQ = questionBank.length;
+            const incorrectCount = totalQ - correctCount;
+            const score = Math.round((correctCount / totalQ) * 100);
+            const percentage = score;
+
+            let statusCategory = "";
+            let statusColor = "";
+            let feedback = "";
+
+            if (score >= 85) {
+                statusCategory = "Sangat Baik";
+                statusColor = "bg-emerald-100 text-emerald-800";
+                feedback = "Selamat! Anda memiliki penguasaan konsep Badan Usaha yang sangat mendalam dan kritis. Pertahankan keunggulan belajar ini!";
+            } else if (score >= 75) {
+                statusCategory = "Baik (Tuntas)";
+                statusColor = "bg-blue-100 text-blue-800";
+                feedback = "Bagus sekali! Anda telah mencapai Kriteria Ketuntasan Tujuan Pembelajaran. Pelajari kembali beberapa soal salah untuk menyempurnakan pemahaman.";
+            } else if (score >= 65) {
+                statusCategory = "Cukup";
+                statusColor = "bg-amber-100 text-amber-800";
+                feedback = "Pemahaman Anda sudah cukup baik, namun perlu pendalaman lebih lanjut pada materi spesifik seperti BUMD dan Koperasi.";
+            } else {
+                statusCategory = "Perlu Bimbingan";
+                statusColor = "bg-rose-100 text-rose-800";
+                feedback = "Tetap semangat! Jangan berkecil hati. Manfaatkan review pembahasan di bawah ini dan lakukan diskusi remedial bersama Ibu Sumila Mahu, S.Pd.";
+            }
+
+            // Save to LocalStorage
+            const submissionData = {
+                id: Date.now(),
+                name: currentStudent.name,
+                class: currentStudent.class,
+                absen: currentStudent.absen,
+                score: score,
+                correct: correctCount,
+                incorrect: incorrectCount,
+                percentage: percentage,
+                status: statusCategory,
+                timestamp: new Date().toLocaleString('id-ID'),
+                userAnswers: userAnswers
+            };
+
+            currentSubmissionData = submissionData;
+            saveSubmissionToStorage(submissionData);
+
+            // Render Result Page
+            document.getElementById('resultStudentName').innerText = currentStudent.name;
+            document.getElementById('resultStudentMeta').innerText = `Kelas: ${currentStudent.class} | No. Absen: ${currentStudent.absen} | Diselesaikan: ${submissionData.timestamp}`;
+            document.getElementById('resultScore').innerText = score;
+            document.getElementById('resultPredicate').innerText = statusCategory;
+            document.getElementById('resultCorrectCount').innerText = `${correctCount} / 30`;
+            document.getElementById('resultIncorrectCount').innerText = `${incorrectCount} / 30`;
+            document.getElementById('resultPercentage').innerText = `${percentage}%`;
+
+            const statusBadge = document.getElementById('resultStatusBadge');
+            statusBadge.innerText = statusCategory;
+            statusBadge.className = `inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold ${statusColor}`;
+
+            document.getElementById('resultMotivationalFeedback').innerText = feedback;
+
+            renderReviewExplanations();
+            navigateTo('result-page');
+        }
+
+        /* ----------------------------------------------------
+           CERTIFICATE MODAL LOGIC
+           ---------------------------------------------------- */
+        function openCertificateModal() {
+            if (!currentSubmissionData) {
+                alert("Data sertifikat belum tersedia.");
+                return;
+            }
+
+            document.getElementById('certStudentName').innerText = currentSubmissionData.name;
+            document.getElementById('certStudentMeta').innerText = `Kelas: ${currentSubmissionData.class} | No. Absen: ${currentSubmissionData.absen}`;
+            document.getElementById('certScore').innerText = currentSubmissionData.score;
+            document.getElementById('certPredicate').innerText = currentSubmissionData.status;
+            document.getElementById('certNo').innerText = `NO: SERT/EKO-XI/${currentSubmissionData.id.toString().slice(-6)}`;
+            document.getElementById('certDate').innerText = `Tehoru, ${currentSubmissionData.timestamp.split(',')[0]}`;
+
+            document.getElementById('certificateModal').classList.remove('hidden');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificateModal').classList.add('hidden');
+        }
+
+        /* ----------------------------------------------------
+           8. REVIEW & EXPLANATIONS GENERATOR
+           ---------------------------------------------------- */
+        function renderReviewExplanations() {
+            const container = document.getElementById('reviewContainer');
+            container.innerHTML = '';
+
+            const optionLabels = ['A', 'B', 'C', 'D', 'E'];
+
+            questionBank.forEach((q, idx) => {
+                const userChoice = userAnswers[idx];
+                const isCorrect = userChoice === q.answer;
+
+                const card = document.createElement('div');
+                card.className = `bg-white p-6 rounded-3xl border card-shadow space-y-4 ${
+                    isCorrect ? 'border-emerald-200' : 'border-rose-200'
+                }`;
+
+                let optionsHTML = '';
+                q.options.forEach((optText, optIdx) => {
+                    let optBg = 'bg-slate-50 border-slate-200 text-slate-700';
+                    let badge = '';
+
+                    if (optIdx === q.answer) {
+                        optBg = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-medium';
+                        badge = `<span class="ml-auto text-xs bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-md">Jawaban Benar</span>`;
+                    } else if (optIdx === userChoice && !isCorrect) {
+                        optBg = 'bg-rose-50 border-rose-300 text-rose-900 font-medium';
+                        badge = `<span class="ml-auto text-xs bg-rose-600 text-white font-bold px-2 py-0.5 rounded-md">Jawaban Anda</span>`;
+                    }
+
+                    optionsHTML += `
+                        <div class="p-3 rounded-xl border ${optBg} flex items-center space-x-3 text-xs sm:text-sm">
+                            <span class="w-6 h-6 rounded-lg bg-white/80 border border-slate-300 flex items-center justify-center font-bold text-xs shrink-0">${optionLabels[optIdx]}</span>
+                            <span>${optText}</span>
+                            ${badge}
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full ${
+                            isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                        }">
+                            Soal ${idx + 1} • ${isCorrect ? 'BENAR' : 'SALAH'}
+                        </span>
+                        <span class="text-xs text-slate-400 font-medium">${q.topic}</span>
+                    </div>
+
+                    <h4 class="font-semibold text-slate-800 text-sm sm:text-base leading-relaxed">${q.question}</h4>
+
+                    <div class="space-y-2">
+                        ${optionsHTML}
+                    </div>
+
+                    <div class="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
+                        <div class="font-bold text-brand-800 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                            <span>Pembahasan & Kunci Jawaban:</span>
+                        </div>
+                        <p class="leading-relaxed text-slate-600">${q.explanation}</p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        /* ----------------------------------------------------
+           9. LOCALSTORAGE MANAGEMENT
+           ---------------------------------------------------- */
+        function getSubmissionsFromStorage() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                console.error("Failed to fetch storage", e);
+                return [];
+            }
+        }
+
+        function saveSubmissionToStorage(newRecord) {
+            const existing = getSubmissionsFromStorage();
+            existing.unshift(newRecord);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+        }
+
+        function clearAllData() {
+            if (confirm("Apakah Anda yakin ingin menghapus seluruh data rekapitulasi nilai peserta didik?")) {
+                localStorage.removeItem(STORAGE_KEY);
+                renderTeacherDashboard();
+            }
+        }
+
+        /* ----------------------------------------------------
+           10. TEACHER AUTHENTICATION & DASHBOARD LOGIC
+           ---------------------------------------------------- */
+        function openTeacherLoginModal() {
+            document.getElementById('teacherAuthModal').classList.remove('hidden');
+        }
+
+        function closeTeacherLoginModal() {
+            document.getElementById('teacherAuthModal').classList.add('hidden');
+            document.getElementById('authErrorMsg').classList.add('hidden');
+        }
+
+        function handleTeacherLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('teacherPassInput').value;
+            if (pass === 'guru123' || pass === 'guru') {
+                closeTeacherLoginModal();
+                document.getElementById('teacherPassInput').value = '';
+                navigateTo('teacher-dashboard-page');
+            } else {
+                document.getElementById('authErrorMsg').classList.remove('hidden');
+            }
+        }
+
+        function logoutTeacher() {
+            navigateTo('landing-page');
+        }
+
+        function renderTeacherDashboard() {
+            const records = getSubmissionsFromStorage();
+
+            // Summary Metrics
+            const total = records.length;
+            document.getElementById('dashTotalStudents').innerText = total;
+
+            if (total > 0) {
+                const sum = records.reduce((acc, r) => acc + r.score, 0);
+                const avg = (sum / total).toFixed(2);
+                const max = Math.max(...records.map(r => r.score));
+                const min = Math.min(...records.map(r => r.score));
+
+                document.getElementById('dashAvgScore').innerText = avg;
+                document.getElementById('dashMaxScore').innerText = max;
+                document.getElementById('dashMinScore').innerText = min;
+            } else {
+                document.getElementById('dashAvgScore').innerText = "0.00";
+                document.getElementById('dashMaxScore').innerText = "0";
+                document.getElementById('dashMinScore').innerText = "0";
+            }
+
+            renderTeacherTable();
+            renderAnalyticsChart(records);
+        }
+
+        function renderTeacherTable() {
+            const records = getSubmissionsFromStorage();
+            const search = document.getElementById('dashSearchInput').value.toLowerCase();
+            const tbody = document.getElementById('teacherTableBody');
+            tbody.innerHTML = '';
+
+            const filtered = records.filter(r => 
+                r.name.toLowerCase().includes(search) || 
+                r.class.toLowerCase().includes(search)
+            );
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center p-8 text-slate-400">
+                            Belum ada data nilai peserta didik yang tersimpan.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach((r, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition";
+
+                let statusBadgeClass = "bg-slate-100 text-slate-700";
+                if (r.score >= 85) statusBadgeClass = "bg-emerald-100 text-emerald-800 font-bold";
+                else if (r.score >= 75) statusBadgeClass = "bg-blue-100 text-blue-800 font-bold";
+                else if (r.score >= 65) statusBadgeClass = "bg-amber-100 text-amber-800 font-bold";
+                else statusBadgeClass = "bg-rose-100 text-rose-800 font-bold";
+
+                tr.innerHTML = `
+                    <td class="p-3 pl-5 font-semibold text-slate-500">${idx + 1}</td>
+                    <td class="p-3 font-bold text-slate-800">${r.name}</td>
+                    <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md font-medium">${r.class}</span></td>
+                    <td class="p-3">${r.absen}</td>
+                    <td class="p-3"><span class="text-emerald-600 font-bold">${r.correct}</span> / <span class="text-rose-600">${r.incorrect}</span></td>
+                    <td class="p-3 font-extrabold text-brand-700 text-sm">${r.score}</td>
+                    <td class="p-3"><span class="px-2.5 py-1 rounded-full text-[11px] ${statusBadgeClass}">${r.status}</span></td>
+                    <td class="p-3 pr-5 text-slate-400 text-[11px]">${r.timestamp}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderAnalyticsChart(records) {
+            const ctx = document.getElementById('scoreDistributionChart');
+            if (!ctx) return;
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            let sangatBaik = 0, baik = 0, cukup = 0, perluBimbingan = 0;
+
+            records.forEach(r => {
+                if (r.score >= 85) sangatBaik++;
+                else if (r.score >= 75) baik++;
+                else if (r.score >= 65) cukup++;
+                else perluBimbingan++;
+            });
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sangat Baik (≥85)', 'Baik (75-84)', 'Cukup (65-74)', 'Perlu Bimbingan (<65)'],
+                    datasets: [{
+                        label: 'Jumlah Peserta Didik',
+                        data: [sangatBaik, baik, cukup, perluBimbingan],
+                        backgroundColor: [
+                            '#059669', // Emerald
+                            '#0284c7', // Blue
+                            '#d97706', // Amber
+                            '#e11d48'  // Rose
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function exportToCSV() {
+            const records = getSubmissionsFromStorage();
+            if (records.length === 0) {
+                alert("Tidak ada data untuk diunduh!");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "No,Nama Lengkap,Kelas,Nomor Absen,Nilai Akhir,Jawaban Benar,Jawaban Salah,Status Ketuntasan,Waktu Pengerjaan\n";
+
+            records.forEach((r, idx) => {
+                const row = `"${idx + 1}","${r.name}","${r.class}","${r.absen}","${r.score}","${r.correct}","${r.incorrect}","${r.status}","${r.timestamp}"`;
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Rekap_Asesmen_Ekonomi_SMAS_AlHilaal_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initialize view on page load
+        window.onload = function() {
+            navigateTo('landing-page');
+        };
+    </script>
+</body>
+</html>
